@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class WindowLoader {
 
-    private static final String fileLocation = "FrontEnd\\FXML\\";
+    private static final String fileLocation = "FrontEnd/FXML/";
     private static Stage w; // Reference to the primary stage
     private  static Stage overLayStage;
 
@@ -55,6 +55,10 @@ public class WindowLoader {
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader();
+            if (window.startsWith("/")) {
+                window = window.substring(1);
+            }
+            System.out.println("Loading " + fileLocation + window + ".fxml");
             loader.setLocation(Objects.requireNonNull(getClass().getClassLoader().getResource(fileLocation + window + ".fxml")));
             root = loader.load();
             StateLoad controller = loader.getController();
@@ -81,7 +85,7 @@ public class WindowLoader {
                 w.getScene().setRoot(root);
             }
         }
-        System.out.println("load");
+        System.out.println("Loaded " + fileLocation + window + ".fxml");
     }
 
     /**

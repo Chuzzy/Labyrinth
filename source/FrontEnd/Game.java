@@ -17,7 +17,7 @@ import java.util.Scanner;
  *
  */
 
-public class Main extends Application {
+public class Game extends Application {
 
     private static MediaPlayer mediaPlayer;
     private static final double DEFAULT_SOUND_LEVEL = 10.0;
@@ -52,7 +52,7 @@ public class Main extends Application {
             sfxVol = DEFAULT_SOUND_LEVEL;
         }
 
-        Main.setVolume(backgroundVol);
+        Game.setVolume(backgroundVol);
         primaryStage.setFullScreen(false);
         primaryStage.setTitle("The Getaway");
         primaryStage.getIcons().add(new Image("player2.png"));
@@ -60,12 +60,12 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.DECORATED);
 
         playMusic(backgroundVol);
-        Main.setVolume(backgroundVol);
+        Game.setVolume(backgroundVol);
 
         initData.put("BackgroundVol", String.valueOf(backgroundVol));
         initData.put("SFXVol", String.valueOf(sfxVol));
 
-        wl.load("startScreen", initData);
+        wl.load("StartScreen", initData);
         primaryStage.show();
     }
 
@@ -107,13 +107,11 @@ public class Main extends Application {
         });
     }
 
-    /***
-     * Only starts javaFX
-     * @param args doesn't use any arguments right now.
+    /**
+     * Starts the program.
+     * @param args program arguments
      */
-
-    public static void main(String[] args) {
+    public static void run(String[] args) {
         launch(args);
     }
-
 }

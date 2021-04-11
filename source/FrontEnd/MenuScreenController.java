@@ -2,20 +2,14 @@ package FrontEnd;
 
 import MessageOfTheDay.MessageOfTheDay;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.StageStyle;
-import sun.font.FontScalerException;
 
-import java.awt.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 

@@ -9,7 +9,6 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
-import javafx.util.Pair;
 
 import java.net.URL;
 import java.util.HashMap;

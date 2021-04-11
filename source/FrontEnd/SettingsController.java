@@ -48,7 +48,7 @@ public class SettingsController extends StateLoad {
 	public void onBackgroundChange() {
 		System.out.print("Background volume changed to " + background.getValue());
 		System.out.println(" (Actual BGM volume is " + background.getValue() / 200 + ")");
-		Main.setVolume(background.getValue());
+		Game.setVolume(background.getValue());
 		getInitData().put("BackgroundVol", ((int) background.getValue()) + "");
 	}
 

@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.png'); -fx-background-size: cover; -fx-background-position: center;" styleClass="WindowName" stylesheets="@../../../Assets/menuStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.MenuScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.png'); -fx-background-size: cover; -fx-background-position: center;" styleClass="WindowName" stylesheets="menuStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.MenuScreenController">
    <center>
       <VBox alignment="CENTER" prefHeight="610.0" prefWidth="773.0" spacing="10" stylesheets="@../../../Assets/menuStyle.css" BorderPane.alignment="CENTER">
          <children>

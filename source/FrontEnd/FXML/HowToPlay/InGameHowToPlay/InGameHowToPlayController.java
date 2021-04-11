@@ -1,7 +1,5 @@
 package FrontEnd.FXML.HowToPlay.InGameHowToPlay;
 
-import BackEnd.GameLoad;
-import FrontEnd.LoadGameController;
 import FrontEnd.StateLoad;
 import FrontEnd.WindowLoader;
 import javafx.fxml.FXML;

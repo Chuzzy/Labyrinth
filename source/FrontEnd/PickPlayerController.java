@@ -1,6 +1,5 @@
 package FrontEnd;
 
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 
 import java.io.*;
@@ -11,7 +10,6 @@ import java.util.ResourceBundle;
 import BackEnd.Profile;
 import javafx.fxml.FXML;
 import javafx.scene.media.AudioClip;
-import javafx.scene.text.TextAlignment;
 
 
 /**
