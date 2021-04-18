@@ -9,9 +9,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.png'); -fx-background-size: cover; -fx-background-position: center;" styleClass="WindowName" stylesheets="menuStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.MenuScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.png'); -fx-background-size: cover; -fx-background-position: center;" styleClass="WindowName" stylesheets="@/menuStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.MenuScreenController">
    <center>
-      <VBox alignment="CENTER" prefHeight="610.0" prefWidth="773.0" spacing="10" stylesheets="@../../../Assets/menuStyle.css" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="610.0" prefWidth="773.0" spacing="10" stylesheets="@/menuStyle.css" BorderPane.alignment="CENTER">
          <children>
             <Text id="Header" fx:id="Header" lineSpacing="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="The Getaway" textAlignment="CENTER" wrappingWidth="620.33154296875">
                <fill>
@@ -26,7 +26,7 @@
                   <Insets bottom="30.0" />
                </VBox.margin>
             </Text>
-            <VBox alignment="CENTER" prefHeight="397.0" prefWidth="979.0" spacing="5.0" stylesheets="@../../../Assets/menuStyle.css">
+            <VBox alignment="CENTER" prefHeight="397.0" prefWidth="979.0" spacing="5.0" stylesheets="@/menuStyle.css">
                <children>
                   <Button fx:id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNewGame" prefHeight="36.0" prefWidth="100.0" text="New Game" textAlignment="CENTER" textFill="#009c05">
                      <VBox.margin>
@@ -34,6 +34,16 @@
                      </VBox.margin>
                   </Button>
                   <Button fx:id="LoadGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onLoadGame" prefHeight="25.0" prefWidth="100.0" text="Load Game" textAlignment="CENTER" textFill="#009c05">
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="3.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="HostServerBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onHostGame" prefHeight="25.0" prefWidth="100.0" text="Host Server" textAlignment="CENTER" textFill="#009c05">
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="3.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="JoinGameBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onJoinGame" prefHeight="25.0" prefWidth="100.0" text="Join as Client" textAlignment="CENTER" textFill="#009c05">
                      <VBox.margin>
                         <Insets bottom="3.0" top="3.0" />
                      </VBox.margin>
@@ -77,7 +87,7 @@
       </VBox>
    </center>
    <bottom>
-       <Label fx:id="MoTD" contentDisplay="TOP" styleClass="MessageOfTheDay" stylesheets="@../../../Assets/menuStyle.css" text="MoTD not loaded" translateY="-20.0" BorderPane.alignment="TOP_CENTER">
+       <Label fx:id="MoTD" contentDisplay="TOP" styleClass="MessageOfTheDay" stylesheets="@/menuStyle.css" text="MoTD not loaded" translateY="-20.0" BorderPane.alignment="TOP_CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>

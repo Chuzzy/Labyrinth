@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
  */
 
 public class GameSetupController extends StateLoad {
+    public ChoiceBox selectProfile;
     /* These final variables are used for the game's Sound Effects (SFX) */
     URL location;
     ResourceBundle resources;

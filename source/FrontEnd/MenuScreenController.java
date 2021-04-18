@@ -130,7 +130,17 @@ public class MenuScreenController extends StateLoad {
         wl = new WindowLoader(newGameButton);
         wl.load("LevelEditorMenu", getInitData());
         MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
-
     }
 
+    public void onHostGame() {
+        wl = new WindowLoader(newGameButton);
+        wl.load("ServerSetup", getInitData());
+        MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
+    }
+
+    public void onJoinGame() {
+        wl = new WindowLoader(newGameButton);
+        wl.load("ClientSetup", getInitData());
+        MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
+    }
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-image: url('//Assets/backgroundMenu.png'); -fx-background-size: cover; -fx-background-position: center;" stylesheets="@/menuStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.ServerSetupController">
+   <center>
+      <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="531.0">
+               <children>
+                  <Text fill="WHITE" layoutX="88.0" layoutY="224.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="backgroundText" text="Profile:" textAlignment="CENTER" wrappingWidth="167.4693603515625">
+
+                  </Text>
+                  <Text fill="WHITE" layoutX="88.0" layoutY="277.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="backgroundText" text="Gameboard: " textAlignment="CENTER" wrappingWidth="167.4693603515625">
+
+                  </Text>
+                  <ChoiceBox fx:id="selectProfile" layoutX="266.0" layoutY="195.0" prefWidth="250.0" />
+                  <ChoiceBox fx:id="selectGameBoard" layoutX="266.0" layoutY="248.0" prefWidth="250.0" />
+                  <Button fx:id="customBoardBtn" layoutX="264.0" layoutY="312.0" mnemonicParsing="false" onAction="#onCustomButton" text="Use Custom" />
+               </children>
+            </AnchorPane>
+         </children>
+      </FlowPane>
+   </center>
+   <top>
+      <FlowPane alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <Text id="GameSetup" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName"
+               text="SERVER SETUP" textAlignment="CENTER" wrappingWidth="630.4693603515625"/>
+      </FlowPane>
+   </top>
+   <bottom>
+      <FlowPane alignment="TOP_CENTER" hgap="45.0" prefHeight="200.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
+            <Button fx:id="start" mnemonicParsing="false" onAction="#onStartButton" styleClass="iniButton" text="Start Server" />
+         </children>
+      </FlowPane>
+   </bottom>
+</BorderPane>
