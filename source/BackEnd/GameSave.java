@@ -35,7 +35,13 @@ public class GameSave {
         int playerCount = Integer.parseInt(initData.get("PlayerCount"));
         Profile[] profiles = new Profile[playerCount];
         for(int i = 0; i < playerCount; i++) {
-            profiles[i] = Profile.readProfile(initData.get("Profile" + i));
+            String profileName = initData.get("Profile" + i);
+            if (profileName.startsWith("Computer ")) {
+                profiles[i] = new ComputerProfile(String.valueOf(i + 1));
+            }
+            else {
+                profiles[i] = Profile.readProfile(profileName);
+            }
         }
         for (Profile profile: profiles) {
             gameState.append(profile.getName()).append("\n");

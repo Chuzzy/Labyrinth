@@ -62,8 +62,7 @@ public class Assets {
             tileView.getChildren().add(tileImage);
             tileView.setTranslateX(x * GameScreenController.tileWidth);
             tileView.setTranslateY(y * GameScreenController.tileWidth);
-        }
-        catch (NullPointerException e) {
+        } catch (NullPointerException e) {
             tileImage = new ImageView(get(tile.getType().toString()));
         }
         if (tile.onFire()) {
@@ -138,9 +137,8 @@ public class Assets {
      *
      * @param tile The tile that should be on the card.
      * @return Card.fxml Object.
-	 * @throws IOException if null card is input
      */
-    public static Node createCard(Tile tile) throws IOException {
+    public static Node createCard(Tile tile) {
         final Node newCard;
         if (tile == null) {
             throw new NullPointerException("Cannot create null tile");
@@ -154,88 +152,95 @@ public class Assets {
         labels.put(GOAL, "SafeHouse");
         labels.put(STRAIGHT, "Bride Mayor");
         labels.put(T_SHAPE, "You know a guy");
-        newCard = FXMLLoader.load(Objects.requireNonNull(GameScreenController.class.getClassLoader().getResource("FrontEnd\\FXML\\Card.fxml")));
-        ImageView newCardImage = ((ImageView) newCard.lookup("#image"));
-        newCardImage.setImage(Assets.get(tile.getType().toString()));
-        ImageView backing = ((ImageView) newCard.lookup("#backing"));
-        Label text = ((Label) newCard.lookup("#text"));
-        text.setText(labels.get(tile.getType()));
-        backing.setImage(Assets.get("CardBack"));
-        newCard.setOnMouseEntered(
-                e -> newCard.setEffect(new DropShadow(20, 0, 20, Color.BLACK)));
-        newCard.setOnMouseExited(e -> newCard.setEffect(null));
-        return newCard;
+        try {
+            newCard = FXMLLoader.load(Objects.requireNonNull(GameScreenController.class.getClassLoader().getResource("FrontEnd\\FXML\\Card.fxml")));
+
+            ImageView newCardImage = ((ImageView) newCard.lookup("#image"));
+            newCardImage.setImage(Assets.get(tile.getType().toString()));
+            ImageView backing = ((ImageView) newCard.lookup("#backing"));
+            Label text = ((Label) newCard.lookup("#text"));
+            text.setText(labels.get(tile.getType()));
+            backing.setImage(Assets.get("CardBack"));
+            newCard.setOnMouseEntered(
+                    e -> newCard.setEffect(new DropShadow(20, 0, 20, Color.BLACK)));
+            newCard.setOnMouseExited(e -> newCard.setEffect(null));
+            return newCard;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
-	/**
-	 * Get an imageView of that player.
-	 *
-	 * @param playerNumber The number of the player whose imageView is required.
-	 * @return the imageView of the specified player.
-	 */
-	public static ImageView getPlayer(int playerNumber) {
-		Image playerModel = get("player" + (playerNumber+1));
-		ImageView player = new ImageView(playerModel);
-		player.setFitHeight(GameScreenController.tileWidth);
-		player.setFitWidth(GameScreenController.tileWidth);
-		player.setId("player " + playerNumber);
-		return player;
-	}
+    /**
+     * Get an imageView of that player.
+     *
+     * @param playerNumber The number of the player whose imageView is required.
+     * @return the imageView of the specified player.
+     */
+    public static ImageView getPlayer(int playerNumber) {
+        Image playerModel = get("player" + (playerNumber + 1));
+        ImageView player = new ImageView(playerModel);
+        player.setFitHeight(GameScreenController.tileWidth);
+        player.setFitWidth(GameScreenController.tileWidth);
+        player.setId("player " + playerNumber);
+        return player;
+    }
 
-	/**
-	 * Get an imageView of a location arrow, that matches the size of the tiles.
-	 *
-	 * @return the imageView of the location arrow.
-	 */
-	public static ImageView getLocationArrow() {
-		Image arrow = get("location_arrow");
-		ImageView locationArrow = new ImageView(arrow);
-		locationArrow.setFitWidth(GameScreenController.tileWidth);
-		locationArrow.setFitHeight(GameScreenController.tileWidth);
-		locationArrow.setId("locationarrow");
-		return locationArrow;
-	}
-	/**
-	 * Get an imageView of a fire effect, that matches the size of a square of 3 by 3 tiles.
-	 *
-	 * @return the imageView of the fire effect.
-	 */
-	public static Node getFireEffect() {
-		Image fire = get("fireEffect");
-		ImageView fireEffect = new ImageView(fire);
-		fireEffect.setFitWidth(GameScreenController.tileWidth * 3);
-		fireEffect.setFitHeight(GameScreenController.tileWidth * 3);
-		return fireEffect;
-	}
+    /**
+     * Get an imageView of a location arrow, that matches the size of the tiles.
+     *
+     * @return the imageView of the location arrow.
+     */
+    public static ImageView getLocationArrow() {
+        Image arrow = get("location_arrow");
+        ImageView locationArrow = new ImageView(arrow);
+        locationArrow.setFitWidth(GameScreenController.tileWidth);
+        locationArrow.setFitHeight(GameScreenController.tileWidth);
+        locationArrow.setId("locationarrow");
+        return locationArrow;
+    }
 
-	/**
-	 * Get an imageView of a freeze effect, that matches the size of a square of 3 by 3 tiles.
-	 *
-	 * @return the imageView of the freeze effect.
-	 */
-	public static Node getFrozenEffect() {
-		Image frozen = get("frozenEffect");
-		ImageView frozenEffect = new ImageView(frozen);
-		frozenEffect.setFitWidth(GameScreenController.tileWidth * 3);
-		frozenEffect.setFitHeight(GameScreenController.tileWidth * 3);
-		return frozenEffect;
-	}
+    /**
+     * Get an imageView of a fire effect, that matches the size of a square of 3 by 3 tiles.
+     *
+     * @return the imageView of the fire effect.
+     */
+    public static Node getFireEffect() {
+        Image fire = get("fireEffect");
+        ImageView fireEffect = new ImageView(fire);
+        fireEffect.setFitWidth(GameScreenController.tileWidth * 3);
+        fireEffect.setFitHeight(GameScreenController.tileWidth * 3);
+        return fireEffect;
+    }
 
-	/**
-	 * Get an imageView of a player's profile.
-	 *
-	 * @param profile of the player whose profile is required.
-	 * @return The specified player's profile.
-	 */
-	public static Node getProfile(Profile profile) {
-		ImageView profileView = new ImageView(get(profile.getIcon()));
-		profileView.setFitWidth(100);
-		profileView.setFitHeight(100);
-		return profileView;
-	}
+    /**
+     * Get an imageView of a freeze effect, that matches the size of a square of 3 by 3 tiles.
+     *
+     * @return the imageView of the freeze effect.
+     */
+    public static Node getFrozenEffect() {
+        Image frozen = get("frozenEffect");
+        ImageView frozenEffect = new ImageView(frozen);
+        frozenEffect.setFitWidth(GameScreenController.tileWidth * 3);
+        frozenEffect.setFitHeight(GameScreenController.tileWidth * 3);
+        return frozenEffect;
+    }
 
-	public static ImageView getCar(int playerNumber) {
-        Image carModel = get("player" + (playerNumber+1));
+    /**
+     * Get an imageView of a player's profile.
+     *
+     * @param profile of the player whose profile is required.
+     * @return The specified player's profile.
+     */
+    public static Node getProfile(Profile profile) {
+        ImageView profileView = new ImageView(get(profile.getIcon()));
+        profileView.setFitWidth(100);
+        profileView.setFitHeight(100);
+        return profileView;
+    }
+
+    public static ImageView getCar(int playerNumber) {
+        Image carModel = get("player" + (playerNumber + 1));
         ImageView car = new ImageView(carModel);
         car.setFitHeight(100);
         car.setFitWidth(100);

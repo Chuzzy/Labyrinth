@@ -93,4 +93,22 @@ public class Coordinate {
     public Coordinate shift(Coordinate shiftAmount) {
         return new Coordinate(shiftAmount.getX() + x, shiftAmount.getY() + y);
     }
+
+    /**
+     * Returns the sum of the absolute values of the x and y components.
+     * @return {@code abs(x) + abs(y)}
+     */
+    public int absoluteSum() {
+        return Math.abs(x) + Math.abs(y);
+    }
+
+    /**
+     * Returns the difference between this coordinate and another coordinate.
+     * In other words, {@code (this.x - other.x, this.y - other.y)}
+     * @param other the other coordinate
+     * @return the difference between the two coordinates
+     */
+    public Coordinate difference(Coordinate other) {
+        return new Coordinate(x - other.x, y - other.y);
+    }
 }

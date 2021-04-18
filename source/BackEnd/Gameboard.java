@@ -120,7 +120,7 @@ public class Gameboard {
      * @param location     The location of the given side to slide in the floorTile from.
      * @param insertedTile The floorTile to slide into that location.
      */
-    public void playFloorTile(Coordinate location, FloorTile insertedTile) throws Exception {
+    public void playFloorTile(Coordinate location, FloorTile insertedTile) {
         // Shifting the player.
         Rotation direction;
         Coordinate shiftAmount;
@@ -137,7 +137,7 @@ public class Gameboard {
             direction = DOWN;
             shiftAmount = new Coordinate(0, -1);
         } else {
-            throw new Exception("Invalid slide location :" + location.toString());
+            throw new IllegalArgumentException("Invalid slide location :" + location.toString());
         }
         // Shift all players on the correct row // column.
         if (direction == LEFT || direction == RIGHT) {
@@ -213,7 +213,7 @@ public class Gameboard {
                 locations.append(t.getLocation().toString());
                 locations.append(":");
             }
-            throw new Exception("Two tiles pushed off the board at" + locations);
+            throw new IllegalStateException("Two tiles pushed off the board at " + locations);
         }
 
         if (tilesToRemove.size() == 1) {
@@ -389,7 +389,7 @@ public class Gameboard {
      * @param tile     type of action tile
      * @param player   refers to the player that's using the tile.
      */
-    public void playActionTile(Coordinate location, ActionTile tile, int player) throws Exception {
+    public void playActionTile(Coordinate location, ActionTile tile, int player) {
         if (tile.getType() == TileType.FROZEN) {
             setFreezeCoords(location);
         } else if (tile.getType() == TileType.FIRE) {
@@ -420,7 +420,7 @@ public class Gameboard {
      *
      * @return the ArrayList of goal tile locations.
      */
-    public ArrayList<Coordinate> checkGoalTiles() throws Exception {
+    public ArrayList<Coordinate> checkGoalTiles() {
         ArrayList<Coordinate> goalCoors = new ArrayList<>();
         forAllFloorTiles((t) -> {
             if (t.getType() == GOAL) {
@@ -437,7 +437,7 @@ public class Gameboard {
      *
      * @return if a player coordinate matches a goal coordinate, return true, else false.
      */
-    public int isPlayerOnGoal() throws Exception {
+    public int isPlayerOnGoal() {
         int players = getNumOfPlayers();
         goalCoors = checkGoalTiles();
         for (Coordinate goalCoor : goalCoors) {
@@ -508,7 +508,7 @@ public class Gameboard {
      *
      * @return the ArrayList of slide locations.
      */
-    public ArrayList<Coordinate> getSlideLocations() throws Exception {
+    public ArrayList<Coordinate> getSlideLocations() {
 
         ArrayList<Coordinate> allSlideLocations = new ArrayList<>();
 
@@ -610,9 +610,8 @@ public class Gameboard {
     /**
      * This method ticks all the given tiles, to remove their affect.
      *
-     * @throws Exception An exception if null.
      */
-    public void ticTiles() throws Exception {
+    public void ticTiles() {
         forAllFloorTiles((t) -> {
             if (t != null) {
                 t.ticFire();

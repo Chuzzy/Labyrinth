@@ -22,7 +22,7 @@ public class Player {
     private final ArrayList<ActionTile> inventory;
     private final SilkBag silkBag;
     private boolean backTracked;
-    private final Gameboard gameboard;
+    protected final Gameboard gameboard;
 
     /**
      * Create a player and give them the silk bag and gameboard references.
@@ -69,7 +69,7 @@ public class Player {
      * @param slideLocations Where the player wants to slide a tile in from
      * @param tile           What tile the player wants to play
      */
-    public void playFloorTile(Coordinate slideLocations, FloorTile tile) throws Exception {
+    public void playFloorTile(Coordinate slideLocations, FloorTile tile) {
         gameboard.playFloorTile(slideLocations, tile);
         lastDrawnTile = null;
     }
@@ -82,7 +82,7 @@ public class Player {
      * @param tile         The freeze or fire action tile
      * @param playerNumber the player that this is played on. ignored if action isn't played on a player.
      */
-    public void playActionTile(Coordinate location, ActionTile tile, int playerNumber) throws Exception {
+    public void playActionTile(Coordinate location, ActionTile tile, int playerNumber) {
         gameboard.playActionTile(location, tile, playerNumber);
         removeFromInventory(tile);
     }

@@ -5,6 +5,7 @@ import javafx.util.Pair;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -34,10 +35,12 @@ public class FileReader {
      *
      * @param filename    The name of the level file format text file.
      * @param silkBagSeed The seed used for this game.
+     * @param gameLogic The instance of game logic to assign to computer players.
+     * @param computerIndices Zero-based indices of the computer players.
      * @return pair where first element is the gameboard and second is the players.
      * @throws Exception issue with gameboard file
      */
-    public static Pair<Gameboard, Player[]> gameSetup(String filename, int silkBagSeed) throws Exception {
+    public static Pair<Gameboard, Player[]> gameSetup(String filename, int silkBagSeed, GameLogic gameLogic, int... computerIndices) throws Exception {
         int rand;
         int tileRand;
         int nonFixedCounter = 0;
@@ -70,7 +73,12 @@ public class FileReader {
             int y = currentLine.nextInt();
             playerPos[i] = new Coordinate(x, y);
             gameboard.setPlayerPos(i, new Coordinate(x, y));
-            players[i] = new Player(silkBag, gameboard);
+            int finalI = i;
+            if (Arrays.stream(computerIndices).anyMatch(index -> index == finalI)) {
+                players[i] = new ComputerPlayer(silkBag, gameboard, gameLogic, i);
+            } else {
+                players[i] = new Player(silkBag, gameboard);
+            }
         }
 
         //// Filling SilkBag
@@ -190,14 +198,4 @@ public class FileReader {
 //        return customGameSetup(gameBoard, (new Random()).nextInt());
 //    }
 
-    /**
-     * This method takes in the given level format file, and checks to see that the file exists.
-     *
-     * @param gameBoard The name of the level file format text file.
-     * @return in The scanner that iterates through the file.
-     * @throws Exception if cannot create gameSetup
-     */
-    public static Pair<Gameboard, Player[]> gameSetup(String gameBoard) throws Exception {
-        return gameSetup(gameBoard, (new Random()).nextInt());
-    }
 }

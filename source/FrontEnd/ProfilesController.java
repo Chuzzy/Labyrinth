@@ -99,7 +99,7 @@ public class ProfilesController extends StateLoad {
 		if (user.exists() && !user.isDirectory()) {
 			input.setStyle("-fx-border-color: red");
 		}
-		if (user.exists() && !user.isDirectory() || newName.isEmpty()) {
+		if (user.exists() && !user.isDirectory() || newName.isEmpty() || newName.equals("Computer")) {
 			input.setStyle("-fx-border-color: red");
 			ERROR_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 

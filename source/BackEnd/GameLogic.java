@@ -28,6 +28,7 @@ public class GameLogic {
     // Current phase of the game, Draw|Floor|Action|Move
     Phase phase;
 
+
     // Special flags
     // True if player gets two moves.
     boolean doubleMove;
@@ -38,17 +39,18 @@ public class GameLogic {
 	 *
 	 * @param boardFile Paths to board file
      * @param gameSaver The game server to use
+     * @param computerIndices The zero-based indices of the computer players
 	 * @throws Exception if issue with board file.
 	 */
-	public void newGame(String boardFile, GameSave gameSaver) throws Exception {
+	public void newGame(String boardFile, GameSave gameSaver, int... computerIndices) throws Exception {
 	    boolean custom=false;
 		doubleMove = false;
 		currentPlayerNo = 0;
 		phase = DRAW;
-		numberOfPlayers = 4;
-		Pair<Gameboard, Player[]> gameItems = FileReader.gameSetup(boardFile, seed);
+		Pair<Gameboard, Player[]> gameItems = FileReader.gameSetup(boardFile, seed, this, computerIndices);
 		gameboard = gameItems.getKey();
 		players = gameItems.getValue();
+        numberOfPlayers = players.length;
 		currentPlayer = players[currentPlayerNo];
 		this.gameSaver = gameSaver;
 	}
@@ -96,7 +98,7 @@ public class GameLogic {
      *
      * @return list of every allowed slide location
      */
-    public ArrayList<Coordinate> getSlideLocations() throws Exception {
+    public ArrayList<Coordinate> getSlideLocations() {
 
         return gameboard.getSlideLocations();
     }
@@ -109,7 +111,7 @@ public class GameLogic {
      * @param location where the tile should be played.
      * @throws Exception if silkbag is empty
      */
-    public void floor(FloorTile tile, Coordinate location) throws Exception {
+    public void floor(FloorTile tile, Coordinate location) {
         gameSaver.playFloorTile(location, tile);
         assert (tile.getType().equals(currentPlayer.isHolding().getType()));
         if (tile != null) {
@@ -120,7 +122,7 @@ public class GameLogic {
 
     /**
      * Returns an array detailing which players have already been backtracked.
-     * The array is such that if player i has been backtracked then
+     * The array is such that if player i hasn't been backtracked then
      * {@code array[i] == true}.
      *
      * @return boolean array representing which players have been backtracked.
@@ -153,7 +155,7 @@ public class GameLogic {
      * @param coordinate where to play the tile (if its played at a location)
      * @param playerNo   which player this card effect (if it does)
      */
-    public void action(ActionTile tile, Coordinate coordinate, int playerNo) throws Exception {
+    public void action(ActionTile tile, Coordinate coordinate, int playerNo) {
         // If tile is null then player didn't/can't play an action card.
         gameSaver.playActionTile(coordinate, tile, playerNo);
         if (tile != null) {
@@ -186,7 +188,7 @@ public class GameLogic {
      *
      * @param location the new location for the current player
      */
-    public void move(Coordinate location) throws Exception {
+    public void move(Coordinate location) {
         gameSaver.playerMove(location);
         gameboard.setPlayerPos(currentPlayerNo, location);
         if (gameboard.isPlayerOnGoal() != -1) {
@@ -256,6 +258,7 @@ public class GameLogic {
      * @param numberOfPlayers number of players
      */
     public void setNumberOfPlayers(int numberOfPlayers) {
+        this.numberOfPlayers = numberOfPlayers;
         gameboard.setNumOfPlayers(numberOfPlayers);
     }
 
@@ -270,12 +273,29 @@ public class GameLogic {
     }
 
     /**
+     * Gets the player whose turn it is.
+     *
+     * @return the current player
+     */
+    public Player getCurrentTurnPlayer() {
+        return currentPlayer;
+    }
+
+    /**
      * gets all move locations that it is valid for the current player to move to.
      *
      * @return all valid move locations
      */
-    public Coordinate[] getMoveLocations() throws Exception {
+    public Coordinate[] getMoveLocations() {
         return gameboard.getMoveDirections(currentPlayerNo).toArray(new Coordinate[0]);
+    }
+
+    /**
+     * Gets whether or not the game is in the double move state.
+     * @return true if a double move action tile is to be used.
+     */
+    public boolean isDoubleMove() {
+        return doubleMove;
     }
 
     /**

@@ -74,14 +74,15 @@ public class PickPlayerController extends StateLoad {
 			label.setText("You decide to start a game with " + getInitData().get("PlayerCount") + " players");
 			playerLists = new ChoiceBox[]{playerList1, playerList2, playerList3, playerList4};
 
-			for (ChoiceBox playerList : playerLists) {
+			for (int i = 0; i < playerLists.length; i++) {
+				ChoiceBox<String> playerList = playerLists[i];
 				playerList.setVisible(false);
 				playerList.getSelectionModel().selectFirst();
 				assert players != null;
+				playerList.getItems().add("Computer " + (i + 1));
 				for (String player : players) {
 					playerList.getItems().addAll(player.substring(0, player.length() - 4));
 				}
-
 			}
 
 			for (String player : players) {

@@ -163,6 +163,10 @@ public class Profile {
 	 * @throws IOException Wrong input
 	 */
 	public static Profile readProfile(String profileFile) throws IOException {
+		if (profileFile.startsWith("Computer")) {
+			return new ComputerProfile(profileFile.substring(9));
+		}
+
 		Scanner reader = new Scanner(new File("SaveData\\UserData\\" + profileFile + ".txt"));
 
 		int wins = reader.nextInt();

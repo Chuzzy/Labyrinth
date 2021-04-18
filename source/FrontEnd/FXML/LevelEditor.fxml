@@ -20,7 +20,7 @@
             </Text>
             <ImageView fx:id="goalImage" fitHeight="90.0" fitWidth="90.0" layoutX="435.0" layoutY="78.0" onDragDetected="#onDragGoalTile" onMouseDragEntered="#onMouseDragGoalTile" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/goal.png" />
+                  <Image url="@/goal.png" />
                </image>
             </ImageView>
             <Text id="levelEditorNameText" layoutX="291.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner" textAlignment="CENTER" wrappingWidth="128.466796875">
@@ -30,7 +30,7 @@
             </Text>
             <ImageView fx:id="cornerImage" fitHeight="90.0" fitWidth="90.0" layoutX="310.0" layoutY="78.0" onDragDetected="#onDragCornerTile" onMouseDragEntered="#onMouseDragCornerTile" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/corner.png" />
+                  <Image url="@/corner.png" />
                </image>
             </ImageView>
             <Text id="levelEditorNameText" layoutX="173.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T - Shape" textAlignment="CENTER" wrappingWidth="128.466796875">
@@ -40,7 +40,7 @@
             </Text>
             <ImageView fx:id="tshapeImage" fitHeight="90.0" fitWidth="90.0" layoutX="191.0" layoutY="78.0" onDragDetected="#onDragTShapeTile" onMouseDragEntered="#onMouseDragTShapeTile" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/t_shape.png" />
+                  <Image url="@/t_shape.png" />
                </image>
             </ImageView>
             <Text id="levelEditorNameText" layoutX="57.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Straight" textAlignment="CENTER" wrappingWidth="128.466796875">
@@ -50,7 +50,7 @@
             </Text>
             <ImageView fx:id="straightImage" fitHeight="90.0" fitWidth="90.0" layoutX="75.0" layoutY="78.0" onDragDetected="#onDragStraightTile" onMouseDragEntered="#onMouseDragStraightTile" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/straight.png" />
+                  <Image url="@/straight.png" />
                </image>
             </ImageView>
             <Text id="levelEditorHeading" layoutX="122.0" layoutY="48.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" wrappingWidth="358.466796875">
@@ -66,7 +66,7 @@
             <RadioButton fx:id="fixRB" layoutX="639.0" layoutY="199.0" mnemonicParsing="false" onAction="#onFixRB" toggleGroup="$floorActionPlayerSet" />
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="607.0" layoutY="82.0" onMouseClicked="#onFixRB" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/fixed.png" />
+                  <Image url="@/fixed.png" />
                </image>
             </ImageView>
             <Text id="levelEditorNameText" layoutX="583.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fix" textAlignment="CENTER" wrappingWidth="128.466796875">
@@ -76,7 +76,7 @@
             </Text>
             <ImageView fx:id="p1Image" fitHeight="80.0" fitWidth="80.0" layoutX="1008.0" layoutY="85.0" onDragDetected="#onDragPlayer1" onMouseDragEntered="#onMouseDragPlayer1" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/player1.png" />
+                  <Image url="@/player1.png" />
                </image>
             </ImageView>
             <Text id="levelEditorNameText" layoutX="983.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER" wrappingWidth="128.466796875">
@@ -91,12 +91,12 @@
             </Text>
             <ImageView fx:id="p3Image" fitHeight="80.0" fitWidth="80.0" layoutX="1210.0" layoutY="85.0" onDragDetected="#onDragPlayer3" onMouseDragEntered="#onMouseDragPlayer3" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/player3.png" />
+                  <Image url="@/player3.png" />
                </image>
             </ImageView>
             <ImageView fx:id="p4Image" fitHeight="80.0" fitWidth="80.0" layoutX="1306.0" layoutY="85.0" onDragDetected="#onDragPlayer4" onMouseDragEntered="#onMouseDragPlayer4" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/player4.png" />
+                  <Image url="@/player4.png" />
                </image>
             </ImageView>
             <Text id="levelEditorNameText" layoutX="1282.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 4" textAlignment="CENTER" wrappingWidth="128.466796875">
@@ -111,7 +111,7 @@
             </Text>
             <ImageView fx:id="p2Image" fitHeight="80.0" fitWidth="80.0" layoutX="1114.0" layoutY="85.0" onDragDetected="#onDragPlayer2" onMouseDragEntered="#onMouseDragPlayer2" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/player2.png" />
+                  <Image url="@/player2.png" />
                </image>
             </ImageView>
             <Text id="levelEditorHeading" layoutX="1015.0" layoutY="49.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Player Position" textAlignment="CENTER" wrappingWidth="358.466796875">
@@ -122,7 +122,7 @@
             <RadioButton fx:id="rotateRB" layoutX="758.0" layoutY="199.0" mnemonicParsing="false" onAction="#onRotateRB" toggleGroup="$floorActionPlayerSet" />
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="726.0" layoutY="82.0" onMouseClicked="#onRotateRB" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/rotateArrow.png" />
+                  <Image url="@/rotateArrow.png" />
                </image>
             </ImageView>
             <Text id="levelEditorNameText" layoutX="702.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rotate" textAlignment="CENTER" wrappingWidth="128.466796875">
@@ -133,7 +133,7 @@
             <RadioButton fx:id="removeRB" layoutX="875.0" layoutY="199.0" mnemonicParsing="false" onAction="#onRemoveRB" toggleGroup="$floorActionPlayerSet" />
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="843.0" layoutY="82.0" onMouseClicked="#onRemoveRB" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/bin.png" />
+                  <Image url="@/bin.png" />
                </image>
             </ImageView>
             <Text id="levelEditorNameText" layoutX="819.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remove" textAlignment="CENTER" wrappingWidth="128.466796875">
